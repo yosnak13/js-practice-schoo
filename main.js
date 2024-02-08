@@ -1,24 +1,23 @@
-// メソッドチェイン
-const target = document.getElementById('main').firstElementChild;
-let text = target.textContent;
-// console.log(text);
+// const target = document.getElementById('main').firstElementChild;
 
-// 取得した要素の値を変更
-// text = target.textContent = 'テキストが変更されました';
-// console.log(text);
+// 以下の場合、addEventListenerの第一引数が'click'（つまりイベント名）、第二引数が関数
+// イベントはいっぱいあるよ。https://qiita.com/mrpero/items/156968e3512d42fffc5e
+// target.addEventListener('click', () => {
+//   target.textContent = 'クリックされました';
+// });
 
-// 色々変更も可能（スタイルを当ててみた）
-// target.style.fontSize = '.5em';
-// target.style.border = '1px solid #000';
-// target.style.marginBottom = '100px';
+// 発火と伝播
+// target2をクリックしましたが先に表示される。
+// webブラウザが認識した要素はdiv#mainのp、別のイベントが設定されている場合は上の要素にイベントが伝播する。
+const target1 = document.getElementById('main');
+const target2 = target1.firstElementChild;
 
-// 要素の削除
-// 親要素がもつ、子の中の要素を削除しちゃう
-// target.parentNode.removeChild(target);
+target1.addEventListener('click', () => {
+  console.log('rarget1をクリックしました');
+});
 
-// 要素の追加（要素の作成、要素の挿入の２ステップ
-const elemet = document.createElement('p');
-elemet.textContent = 'これは追加された要素です';
-
-const tgt = document.getElementById('main');
-tgt.appendChild(elemet); // 最後に
+target2.addEventListener('click', (e) => {
+  console.log('rarget2をクリックしました');
+  console.log(e); // PointerEvent
+  e.stopPropagation(); // 引数を取ってこのメソッドを書くと、伝播を止められる
+});
