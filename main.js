@@ -1,23 +1,39 @@
-// const target = document.getElementById('main').firstElementChild;
+//$()というメソッド。引数にcssセレクターを突っ込む。
+const main = $('#main');
+// 以下と同等
+// document.getElementById('main');
+// document.querySelectorAll('#main');
 
-// 以下の場合、addEventListenerの第一引数が'click'（つまりイベント名）、第二引数が関数
-// イベントはいっぱいあるよ。https://qiita.com/mrpero/items/156968e3512d42fffc5e
-// target.addEventListener('click', () => {
-//   target.textContent = 'クリックされました';
+console.log(main);
+
+// テキスト書き換え。セキュリティ的によくないけど、.textを.htmlにして引数にHTMLタグを入れることもできる。
+$('#main > p:first-child').text('変更されました');
+
+// クラス追加
+// $('#main > p:first-child').addClass('red');
+
+// スタイル追加
+// $('#main > p:first-child').css({
+//   coloer: 'red',
+//   fontSize: '30px',
+//   backgroundColoer: 'black'
 // });
 
-// 発火と伝播
-// target2をクリックしましたが先に表示される。
-// webブラウザが認識した要素はdiv#mainのp、別のイベントが設定されている場合は上の要素にイベントが伝播する。
-const target1 = document.getElementById('main');
-const target2 = target1.firstElementChild;
+// dom生成
+// const $el1 = $('<p>').text('手前に追加されたテキスト');
+// const $el2 = $('<p>').text('後ろに追加されたテキスト');
+// $('#main').prepend($el1);
+// $('#main').append($el2);
 
-target1.addEventListener('click', () => {
-  console.log('rarget1をクリックしました');
-});
+// jQueryで取得したDOMを変数に格納する場合、その変数名の頭に`$`をつける慣習がある
 
-target2.addEventListener('click', (e) => {
-  console.log('rarget2をクリックしました');
-  console.log(e); // PointerEvent
-  e.stopPropagation(); // 引数を取ってこのメソッドを書くと、伝播を止められる
+const $target = $('#main > p:first-child');
+
+$target.on('click', function () {
+  $(this).css(
+    {
+      color: 'red',
+      fontWeight: 'bold'
+    }
+  );
 });
