@@ -2,15 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JavaScriptの学習</title>
+  <link rel="stylesheet" href="./reset.css">
+  <link rel="stylesheet" href="./main.css">
 </head>
+
 <body>
-    <h1>JavaScriptの学習</h1>
-    <div id="main">
-      <p>このhtmlファイルとmain.jsを使って学習を進めていきます</p>
-      <p>今回からは実際にHTMLを操作する方法を学んでいきます</p>
-    </div>
-    <script src="./main.js"></script>
+  <h1>Qiitaの最新記事</h1>
+  <nav>
+    <input type="text" id="form" placeholder="検索文字列">
+    <p id="btn">検索する</p>
+  </nav>
+  <main id="articlesArea" class="article-area"></main>
+  <div class="modal-bg" id="modalBg">
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+  <script src="main.js"></script>
 </body>
 </html>
