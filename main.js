@@ -1,16 +1,23 @@
-// アニメーション
-const $target = $('#main > p:first-child');
+const IMG_LENGTH = 18;
+const IMG_WIDTH = 280;
 
-$target.click(function () {
-  $(this).fadeOut(2000);
+const $main = $('#main');
+
+// 画像の追加
+for (let i = 1; i <= IMG_LENGTH; i++) {
+  const $el = $('<img>').attr({
+    src: `./imgs/${i}.png`,
+    width: IMG_WIDTH
+  }).addClass('item');
+  $main.append($el);
+}
+
+// masonryの処理
+const $masonryMain = $('#main').masonry({
+  itemSelector: '.itme',
+  coumnWidth: IMG_WIDTH
 });
 
-// アニメーション、開発現場では使わない。ミリ単位でelementを書き換えており処理が重い。
-// $target.click(function () {
-//   $(this).animate({
-//     fontSize: '40px',
-//     marginBottom: '40px'
-//   }, {
-//     duration: 2000
-//   });
-// });
+$masonryMain.imagesLoaded().progress(function () {
+  $main.masonry('layout');
+})
