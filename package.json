@@ -1,0 +1,19 @@
+{
+  "name": "schoo",
+  "version": "1.0.0",
+  "description": "practice by schoo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yosnak13/js-practice-schoo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yosnak13/js-practice-schoo/issues"
+  },
+  "homepage": "https://github.com/yosnak13/js-practice-schoo#readme"
+}
